@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1>Catálogo</h1>
-
+{% comment %} onclick="addToCart('{{ product.id }}', '{{ product.name }}', '{{ product.price }}', '{{ product.image }}');" {% endcomment %}
 {% for categoria in categorias %}
     <h2>{{ categoria.name }}</h2>
     <div class="row">
@@ -14,6 +14,10 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ producto.name }}</h5>
                             <p class="card-text">Precio: {{ producto.precio }}</p>
+                            <button class="btn btn-primary w-50 mt-3 "
+                            onclick="agregar('{{ producto.id }}', '{{ producto.name }}', '{{ producto.precio }}', '{{ producto.imagen }}');" 
+                            >Agregar
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -72,6 +72,9 @@ def agregar_producto(request):
 def carrito(request):
     return render(request, 'carrito.html')
 
+def pago(request):
+    return render(request, 'pago.html')
+
 
 """producto = get_object_or_404(Producto, id=id)
     perfil = request.session.get('perfil')

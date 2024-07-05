@@ -1,9 +1,10 @@
 {% extends "layouts/base.html"%}
 
 {% block content%}
-<h1>Catalogo</h1>
-
-<p> 
-    {% lorem 20 b random %}
-</p>
+<h1>Tu carrito</h1>
+<div id='carrito'>
+</div>
+<div class=" text-end m-3">
+    <a class="btn btn-primary btn-lg" href="{% url 'pago' %}">Proceder al Pago</a>
+  </div>
 {% endblock%}

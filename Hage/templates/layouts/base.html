@@ -9,6 +9,7 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
           crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/controlesCarrito.js' %}" ></script>
     <title>Document</title>
 </head>
 <body>
@@ -29,6 +30,7 @@
                     <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
                     <a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a>
                     <a class="nav-link" href="{% url 'register' %}">Registrarse</a>
+                    <a class="nav-link" href="{% url 'carrito' %}">Carrito</a>
                 </div>
             </div>
         </div>
