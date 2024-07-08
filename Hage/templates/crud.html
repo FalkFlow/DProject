@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Lista de Productos</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Activo</th>
+                <th>Destacado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+            <tr>
+                <td>{{ producto.name }}</td>
+                <td>{{ producto.categoria.name }}</td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.activate }}</td>
+                <td>{{ producto.destacado }}</td>
+                <td> <button type="submit" class="btn btn-primary mt-3"> 
+                    <a href="{% url 'modificar_producto' producto.id %}" class="text-white text-decoration-none">
+                        Modificar
+                    </a>
+                    </button>
+                <td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<button type="submit" class="btn btn-primary mt-3">
+    <a href="{% url 'agregar_producto' %}" class="text-white text-decoration-none">agregar productos </a>
+</button>
+{% endblock %}

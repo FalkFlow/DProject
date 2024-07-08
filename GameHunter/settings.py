@@ -127,3 +127,5 @@ ROLES = (
     ('admin', 'Administrador'), # rol de administrador
     ('cliente', 'Cliente'), # rol de cliente
 )
+
+LOGOUT_REDIRECT_URL = '/'

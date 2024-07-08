@@ -1,5 +1,6 @@
 from django.urls import path # type: ignore
 from . import views
+from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
@@ -12,4 +13,7 @@ urlpatterns = [
     path('agregar_producto/', views.agregar_producto, name='agregar_producto'),
     path('carrito/', views.carrito, name='carrito'),
     path('pago/', views.pago, name='pago'),
+    path('crud/', views.producto_list, name='crud'),
+    path('logout/', views.salir, name='logout'),
+    path('modificar_producto/<int:id>', views.modificar, name='modificar_producto'),
 ]

@@ -13,10 +13,6 @@
         {% for producto in productos %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="10000">
                 <img src="{{ producto.imagen }}" class="d-block w-100" alt="{{ producto.name }}" >
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>{{ producto.name }}</h5>
-                    <p>Precio: {{ producto.precio }}</p>
-                </div>
             </div>
         {% endfor %}
     </div>
