@@ -1,6 +1,7 @@
-window.onload = function () {
+document.addEventListener('DOMContentLoaded', () => {
     cargarCarrito();
-  };
+    actualizarContadorCarrito();
+  });
 
 const cargarCarrito = () => {
     let localCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -32,9 +33,25 @@ const cargarCarrito = () => {
   
       carrito.appendChild(productosCart);
     });
-  
+    
+    actualizarContadorCarrito();
+    verificarCarrito();
   };
 
+  const verificarCarrito = () => {
+    let localCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let carritoBoton = document.getElementById('carrito-boton');
+
+    if (localCarrito.length === 0) {
+        carritoBoton.classList.add('disabled');
+        carritoBoton.setAttribute('aria-disabled', 'true');
+        carritoBoton.href = '#';
+    } else {
+        carritoBoton.classList.remove('disabled');
+        carritoBoton.removeAttribute('aria-disabled');
+        carritoBoton.href = '{% url "carrito" %}';
+    }
+};
 
   const agregar = (productoId, productoN, productoPrecio, productoImagen) => {
     console.log(productoId);
@@ -70,3 +87,35 @@ const cargarCarrito = () => {
     }
     cargarCarrito();
   };
+
+  const actualizarContadorCarrito = () => {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let totalProductos = carrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+    console.log("Actualizando contador del carrito:", totalProductos);
+    
+    let contador = document.getElementById('contador-carrito');
+    if (contador) {
+        contador.textContent = totalProductos;
+    } else {
+        console.log("No se encontró el elemento del contador");
+    }
+
+  const generarBoleta = () => {
+  let localCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  let productosBoleta = document.getElementById('productosBoleta');
+  let totalBoleta = document.getElementById('totalBoleta');
+  let total = 0;
+
+  productosBoleta.innerHTML = '';
+
+  localCarrito.forEach(producto => {
+    const productoItem = document.createElement('li');
+    productoItem.textContent = `${producto.nombre} - Cantidad: ${producto.cantidad} - Precio: $${producto.precio * producto.cantidad}`;
+    productosBoleta.appendChild(productoItem);
+
+    total += producto.precio * producto.cantidad;
+  });
+
+  totalBoleta.textContent = `Total: $${total}`;
+};
+};

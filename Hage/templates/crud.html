@@ -2,8 +2,9 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h2>Lista de Productos</h2>
-    <table class="table">
+    <h2 class="Titulo">Lista de Productos</h2>
+    <div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered ">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -11,28 +12,39 @@
                 <th>Precio</th>
                 <th>Activo</th>
                 <th>Destacado</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             {% for producto in productos %}
             <tr>
-                <td>{{ producto.name }}</td>
-                <td>{{ producto.categoria.name }}</td>
-                <td>{{ producto.precio }}</td>
-                <td>{{ producto.activate }}</td>
-                <td>{{ producto.destacado }}</td>
-                <td> <button type="submit" class="btn btn-primary mt-3"> 
-                    <a href="{% url 'modificar_producto' producto.id %}" class="text-white text-decoration-none">
-                        Modificar
-                    </a>
+                <td class="align-middle">{{ producto.name }}</td>
+                <td class="align-middle">{{ producto.categoria.name }}</td>
+                <td class="align-middle">{{ producto.precio }}</td>
+                <td class="align-middle">{{ producto.activate }}</td>
+                <td class="align-middle">{{ producto.destacado }}</td>
+                <td class="align-middle">
+                    <button type="submit" class="btn btn-primary mr-1 align-middle"> 
+                        <a href="{% url 'modificar_producto' producto.id %}" class="text-white text-decoration-none">
+                            Modificar
+                        </a>
                     </button>
-                <td>
+                    <form method="post" action="{% url 'eliminar_producto' producto.id %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">X</button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
-<button type="submit" class="btn btn-primary mt-3">
-    <a href="{% url 'agregar_producto' %}" class="text-white text-decoration-none">agregar productos </a>
-</button>
+<div class="mx-auto">
+<a href="{% url 'agregar_producto' %}" class="text-white text-decoration-none">
+    <button type="submit" class="btn btn-primary mt-3" style="width: 100%;">
+        agregar productos 
+    </button>
+</a>
+</div>
+</div>
 {% endblock %}

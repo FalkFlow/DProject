@@ -3,15 +3,17 @@
 
 {% block content %}
 <div class="container my-3 px-2 align-items-center justify-content-center col-md-7">
-    <h1 class="text-center">SOBRE NOSOTROS</h1>
-    <img src="{% static 'img/logo.png' %}" class="Nosotros_imagen my-3 mx-5 align-items-center" width="240px">
+    <h1 class="text-center Titulo">SOBRE NOSOTROS</h1>
+    <div class="mx-auto pd-auto">
+        <img src="{% static 'img/logo.png' %}" class="Nosotros_imagen my-3 mx-auto d-block" width="240px">
+    </div>
     <div class="card">
-        <div class="card-header pb-3" id="Collapse1">
-            <a class="card-title lead collapsed" data-bs-toggle="collapse" href="#collapseExample" role="tabpanel" aria-expanded="false" aria-controls="collapseExample"
+        <div class="card-header pb-3">
+            <a class="card-title lead collapsed" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"
             style="text-decoration:none; color:rgb(118, 147, 135);">
                 <b>Nosotros</b>
             </a>
-            <div class="collapse" id="collapseExample">
+            <div class="collapse multi-collapse" id="collapseExample">
                 <div class="card-content card-body">
                     <p>
                         Nuestra tienda comenzó como el sueño de un amante de las plantas. 
@@ -31,12 +33,12 @@
                 </div>
             </div>
         </div>
-        <div class="card-header pb-3" id="Collapse2">
-            <a class="card-title lead collapsed" data-bs-toggle="collapse" href="#collapse2" role="tabpanel" aria-expanded="false" aria-controls="collapse2"
+        <div class="card-header pb-3">
+            <a class="card-title lead collapsed" data-bs-toggle="collapse" href="#collapse2" role="button" aria-expanded="false" aria-controls="collapse2"
             style="text-decoration:none; color:rgb(118, 147, 135);">
                 <b>Misión</b>
             </a>
-            <div class="collapse" id="collapse2">
+            <div class="collapse multi-collapse" id="collapse2">
                 <div class="card-content card-body">
                     <p>
                         Nuestra misión es clara y apasionante: entregar productos de jardinería de calidad a precios justos. 
